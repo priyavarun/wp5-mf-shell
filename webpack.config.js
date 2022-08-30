@@ -31,6 +31,7 @@ module.exports = {
       },
     ],
   },
+  name: "shell",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
@@ -40,17 +41,19 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "shell",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+          LeftNav: "leftNavigation@http://localhost:3001/remoteEntry.js",
+          TopNav: "topNavigation@http://localhost:3002/remoteEntry.js",
+          ItemDetails: "itemDetails@http://localhost:3003/remoteEntry.js"
+      },
       exposes: {},
       shared: {
         "react": {
           singleton: true,
-          eager: true,
           requiredVersion: "18.2.0"
         },
         "react-dom": {
           singleton: true,
-          eager: true,
           requiredVersion: "18.2.0"
         }
       }
