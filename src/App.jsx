@@ -1,21 +1,9 @@
 import React, { Suspense } from "react";
 import "./App.scss";
 
-const LeftNavComponent = React.lazy(() =>
-  import("LeftNav/LeftNav").catch((err) =>
-    console.log("Error in importing 1", err)
-  )
-);
-const TopNavComponent = React.lazy(() =>
-  import("TopNav/TopNav").catch((err) =>
-    console.log("Error in importing2 ", err)
-  )
-);
-const ItemDetailsComponent = React.lazy(() =>
-  import("ItemDetails/ItemDetails").catch((err) =>
-    console.log("Error in importing3", err)
-  )
-);
+const LeftNavComponent = React.lazy(() => import("LeftNav/LeftNav"));
+const TopNavComponent = React.lazy(() => import("TopNav/TopNav"));
+const ItemDetailsComponent = React.lazy(() =>import("ItemDetails/ItemDetails"));
 
 export default function () {
   return (
